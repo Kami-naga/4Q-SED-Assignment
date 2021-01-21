@@ -18,7 +18,7 @@ public class User {
 
     private String userName;
 
-    private String password;
+    private String userPassword;
 
     @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "roleId")

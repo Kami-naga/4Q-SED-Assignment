@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean checkUserLogin(UserLoginForm loginForm, User userInfo) {
-        return userInfo.getPassword().equals(loginForm.getUserPassword());
+        return userInfo.getUserPassword().equals(loginForm.getUserPassword());
     }
 
     @Override
@@ -65,6 +65,5 @@ public class UserServiceImpl implements UserService {
         userInfoRepository.deleteById(userId);
         return Boolean.TRUE;
     }
-
 
 }

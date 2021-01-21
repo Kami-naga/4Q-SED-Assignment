@@ -39,6 +39,12 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         List<UserVO> userVOList = new ArrayList<>();
+        userService.findAllUsers().forEach(user -> {
+            UserVO userInfoVO = new UserVO();
+            BeanUtils.copyProperties(user, userInfoVO);
+            userInfoVO.setRoleName(userService.findRoleNameByUserId(user.getUserId()));
+            userVOList.add(userInfoVO);
+        });
         return new ResponseEntity<>(userVOList, HttpStatus.OK);
     }
 
@@ -78,7 +84,7 @@ public class UserController {
         }).orElseGet(()->new ResponseEntity<>(HttpStatus.CONFLICT));
     }
 
-    @ApiOperation(value="新添管理员")
+    @ApiOperation(value="add new administrator")
     @PostMapping("/admin")
     public ResponseEntity<UserVO> adminRegister(@RequestBody UserRegisterForm registerForm,
                                                     HttpServletRequest request){
