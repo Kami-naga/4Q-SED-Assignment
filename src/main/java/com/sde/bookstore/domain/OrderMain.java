@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,7 +26,7 @@ public class OrderMain {
     @JsonIgnore
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "orderMain")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "orderMain")
     @JsonIgnore
-    private Set<OrderItem> orderItems;
+    private List<OrderItem> orderItems;
 }
