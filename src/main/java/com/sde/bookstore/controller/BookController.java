@@ -28,7 +28,7 @@ public class BookController {
 
     @ApiOperation(value="get all books")
     @GetMapping("/")
-    public ResponseEntity<List<BookVO>> getAllBookBriefs(){
+    public ResponseEntity<List<BookVO>> getAllBooks(){
         List<BookVO> bookVOList = new ArrayList<>();
         bookService.findAllBooks().forEach(book -> {
             BookVO bookVO = new BookVO();

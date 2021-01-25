@@ -9,7 +9,7 @@ public interface BookService {
 
     Iterable<Book> findAllBooks();
 
-    Optional<Book> findBookById(Long id);
+    //Optional<Book> findBookById(Long id);
 
     Optional<Book> addBook(BookForm bookForm);
 

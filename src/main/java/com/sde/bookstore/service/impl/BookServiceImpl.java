@@ -26,11 +26,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Optional<Book> findBookById(Long id) {
-        return bookRepository.findByBookId(id);
-    }
-
-    @Override
     public Optional<Book> addBook(BookForm bookForm) {
         Book book = new Book();
         BeanUtils.copyProperties(bookForm,book);
