@@ -72,7 +72,7 @@ public class BookControllerTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(
-                        "[]"))
+                        "[{\"bookId\":4,\"price\":2.00,\"stock\":10,\"name\":\"tt\"},{\"bookId\":5,\"price\":20.00,\"stock\":30,\"name\":\"aa\"}]"))
                 .andDo(print())
                 .andReturn();
     }
