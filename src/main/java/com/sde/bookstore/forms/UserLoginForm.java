@@ -6,9 +6,12 @@ import lombok.Data;
 @Data
 public class UserLoginForm {
 
-    @JsonProperty("name")
     private String userName;
 
-    @JsonProperty("pwd")
+    @JsonProperty("password")
     private String userPassword;
+
+//    private Boolean autoLogin;
+//
+//    private String type;
 }

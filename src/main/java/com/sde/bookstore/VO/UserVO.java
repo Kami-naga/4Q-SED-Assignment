@@ -8,8 +8,13 @@ public class UserVO {
 
     private Long userId;
 
-    @JsonProperty("name")
     private String userName;
 
     private String roleName;
+
+    private String currentAuthority;
+
+    private String status;
+
+    private String type;
 }

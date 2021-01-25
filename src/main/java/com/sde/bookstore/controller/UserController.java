@@ -43,6 +43,9 @@ public class UserController {
             UserVO userInfoVO = new UserVO();
             BeanUtils.copyProperties(user, userInfoVO);
             userInfoVO.setRoleName(userService.findRoleNameByUserId(user.getUserId()));
+            userInfoVO.setCurrentAuthority("ADMINISTRATOR".equals(userInfoVO.getRoleName())? "admin":"user");
+            userInfoVO.setStatus("ok");
+            userInfoVO.setType("account");
             userVOList.add(userInfoVO);
         });
         return new ResponseEntity<>(userVOList, HttpStatus.OK);
@@ -58,6 +61,9 @@ public class UserController {
                 UserVO userInfoVO = new UserVO();
                 BeanUtils.copyProperties(userInfo, userInfoVO);
                 userInfoVO.setRoleName(userService.findRoleNameByUserId(userInfo.getUserId()));
+                userInfoVO.setCurrentAuthority("ADMINISTRATOR".equals(userInfoVO.getRoleName())? "admin":"user");
+                userInfoVO.setStatus("ok");
+                userInfoVO.setType("account");
                 return new ResponseEntity<>(userInfoVO,HttpStatus.CREATED);
             }
             else{
@@ -80,6 +86,9 @@ public class UserController {
             UserVO userInfoVO = new UserVO();
             BeanUtils.copyProperties(userInfo, userInfoVO);
             userInfoVO.setRoleName(roleService.findByRoleName(UserRoleType.CUSTOM.getRoleName()).get().getRoleName());
+            userInfoVO.setCurrentAuthority("user");
+            userInfoVO.setStatus("ok");
+            userInfoVO.setType("account");
             return new ResponseEntity<>(userInfoVO,HttpStatus.CREATED);
         }).orElseGet(()->new ResponseEntity<>(HttpStatus.CONFLICT));
     }
@@ -96,6 +105,9 @@ public class UserController {
             UserVO userInfoVO = new UserVO();
             BeanUtils.copyProperties(user, userInfoVO);
             userInfoVO.setRoleName(roleService.findByRoleName(UserRoleType.ADMINISTRATOR.getRoleName()).get().getRoleName());
+            userInfoVO.setCurrentAuthority("admin");
+            userInfoVO.setStatus("ok");
+            userInfoVO.setType("account");
             return new ResponseEntity<>(userInfoVO,HttpStatus.CREATED);
         }).orElseGet(()->new ResponseEntity<>(HttpStatus.CONFLICT));
     }
